@@ -11,8 +11,6 @@ def update_xml(prev_xml,cur_xml):
         cur_para.attrs['id'] = p_last
         update_sentence(sentences,p_last)
 
-
-
 def update_sentence(sentences,cur_par_id):
     cur_sentence_count =1
     for sentence in sentences:
@@ -20,15 +18,14 @@ def update_sentence(sentences,cur_par_id):
         cur_sentence_count+=1
 
 
+
 def merge(src,dest):
 
     update_xml(src,dest)
-    elements_to_append = src.find_all("p")
+    elements_to_append = dest.find_all("p")
     root_elem = src.find("text")
     root_elem.extend(elements_to_append)
     return soup_src
-
-
 
 if __name__ == "__main__":
     bo_text = Path("./dmk-t341-t0202-08-padma-20221217.bo.xml").read_text(encoding="utf-8")
